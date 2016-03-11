@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_mainFunction"
+        android:checkableBehavior="single">
+        <item android:id="@+id/nav_allEmail"
+            android:icon="@drawable/ic_email_black_24dp"
+            android:title="Emails" />
+        <item android:id="@+id/nav_draft"
+            android:icon="@drawable/ic_drafts_green_24dp"
+            android:title="Drafts" />
+        <item android:id="@+id/nav_sent"
+            android:icon="@drawable/ic_send_green_24dp"
+            android:title="Sent" />
+        <item android:id="@+id/nav_star"
+            android:icon="@drawable/ic_star_green_24dp"
+            android:title="Starred" />
+        <item android:id="@+id/nav_trash"
+            android:icon="@drawable/ic_delete_green_24dp"
+            android:title="Trash" />
+    </group>
+
+    <group
+        android:id="@+id/menu_other"
+        android:checkableBehavior="none">
+            <item android:id="@+id/nav_about"
+                android:icon="@drawable/ic_info_green_24dp"
+                android:title="About" />
+            <item android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_settings_green_24dp"
+                android:title="Setting" />
+    </group>
+
+</menu>
