@@ -1,30 +1,36 @@
 package project.irfananda.navdraw_w_slidetab.fragment;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import project.irfananda.navdraw_w_slidetab.R;
+import project.irfananda.navdraw_w_slidetab.activity.MainActivity;
 
 
 public class TabFragment extends Fragment {
 
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
     private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     public TabFragment() {
-        // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public TabFragment(TabLayout tabLayout) {
+        this.tabLayout = tabLayout;
     }
 
     @Override
@@ -36,7 +42,6 @@ public class TabFragment extends Fragment {
         viewPager = (ViewPager)v.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         return v;
