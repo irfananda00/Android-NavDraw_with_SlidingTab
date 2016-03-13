@@ -4,9 +4,9 @@
     <group
         android:id="@+id/menu_mainFunction"
         android:checkableBehavior="single">
-        <item android:id="@+id/nav_allEmail"
-            android:icon="@drawable/ic_email_black_24dp"
-            android:title="Emails" />
+        <item android:id="@+id/nav_list"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="List" />
         <item android:id="@+id/nav_draft"
             android:icon="@drawable/ic_drafts_green_24dp"
             android:title="Drafts" />

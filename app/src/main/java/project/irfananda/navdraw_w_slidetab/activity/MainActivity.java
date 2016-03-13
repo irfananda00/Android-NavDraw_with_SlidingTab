@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_allEmail) {
+        if (id == R.id.nav_list) {
             fragment = new TabFragment();
         } else if (id == R.id.nav_draft) {
 

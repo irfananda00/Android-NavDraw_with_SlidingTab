@@ -1,14 +1,12 @@
 package project.irfananda.navdraw_w_slidetab.fragment;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.irfananda.navdraw_w_slidetab.R;
-import project.irfananda.navdraw_w_slidetab.activity.MainActivity;
 
 
 public class TabFragment extends Fragment {
@@ -44,18 +41,22 @@ public class TabFragment extends Fragment {
 
         tabLayout.setupWithViewPager(viewPager);
 
+        getActivity().setTitle("Recycler View");
+
         return v;
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new LeftFragment(), "Newest");
-        adapter.addFragment(new RightFragment(), "Latest");
+        adapter.addFragment(new LinearFragment(), "Linear");
+        adapter.addFragment(new CardFragment(), "Card");
+        adapter.addFragment(new GridFragment(), "Grid");
+        adapter.addFragment(new StaggeredFragment(), "Stag");
         viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<android.support.v4.app.Fragment> mFragmentList = new ArrayList<>();
+        private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager fragmentManager) {
@@ -63,7 +64,7 @@ public class TabFragment extends Fragment {
         }
 
         @Override
-        public android.support.v4.app.Fragment getItem(int position) {
+        public Fragment getItem(int position) {
             return mFragmentList.get(position);
         }
 
@@ -72,7 +73,7 @@ public class TabFragment extends Fragment {
             return mFragmentList.size();
         }
 
-        public void addFragment(android.support.v4.app.Fragment fragment, String title) {
+        public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
