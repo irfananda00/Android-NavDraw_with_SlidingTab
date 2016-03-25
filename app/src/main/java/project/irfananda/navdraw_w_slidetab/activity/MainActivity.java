@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import project.irfananda.navdraw_w_slidetab.R;
+import project.irfananda.navdraw_w_slidetab.fragment.LoginFragment;
 import project.irfananda.navdraw_w_slidetab.fragment.TabFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -35,8 +36,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, drawer, toolbar,  R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -86,19 +86,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_list) {
-            fragment = new TabFragment();
-        } else if (id == R.id.nav_draft) {
-
-        } else if (id == R.id.nav_sent) {
-
-        } else if (id == R.id.nav_star) {
-
-        } else if (id == R.id.nav_trash) {
-
-        } else if (id == R.id.nav_about) {
-
-        } else if (id == R.id.nav_setting) {
-
+            fragment = new TabFragment(tabLayout);
+        } else if (id == R.id.nav_login) {
+            fragment = new LoginFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

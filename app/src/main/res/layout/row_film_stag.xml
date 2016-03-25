@@ -13,7 +13,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_card"
         android:background="?android:attr/selectableItemBackground"
         android:focusable="true"
         android:clickable="true"
@@ -23,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:background="@color/cardview_light_background"
+            android:layout_below="@id/rl_img"
             android:id="@+id/rl_title">
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +60,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rl_title"
+            android:id="@+id/rl_img"
             android:background="@color/windowBackgroundImage">
             <ImageView
                 android:layout_width="wrap_content"

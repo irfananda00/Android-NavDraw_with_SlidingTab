@@ -40,11 +40,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         holder.txt_category.setText(film.getCategory());
         holder.txt_price.setText("$ "+film.getPrice());
         holder.img_poster.setImageResource(film.getImg());
-        if (film.isOrdered()){
-            holder.img_ordered.setImageResource(R.drawable.ic_check_circle_amber_500_24dp);
-        }else {
-            holder.img_ordered.setImageResource(R.drawable.ic_check_circle_grey_500_24dp);
-        }
+//        if (film.isOrdered()){
+//            holder.img_ordered.setImageResource(R.drawable.ic_check_circle_amber_500_24dp);
+//        }else {
+//            holder.img_ordered.setImageResource(R.drawable.ic_check_circle_grey_500_24dp);
+//        }
     }
 
     @Override
@@ -54,7 +54,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView txt_title, txt_category, txt_price;
-        public ImageView img_poster, img_ordered;
+        public ImageView img_poster;
         public CardView cv;
 
         public MyViewHolder(View view) {
@@ -64,7 +64,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             txt_category= (TextView) view.findViewById(R.id.txt_category);
             txt_price= (TextView) view.findViewById(R.id.txt_price);
             img_poster= (ImageView) view.findViewById(R.id.img_poster);
-            img_ordered= (ImageView) view.findViewById(R.id.img_ordered);
         }
     }
 

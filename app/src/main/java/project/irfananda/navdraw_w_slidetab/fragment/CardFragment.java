@@ -1,6 +1,7 @@
 package project.irfananda.navdraw_w_slidetab.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import java.util.List;
 import project.irfananda.navdraw_w_slidetab.ClickListener;
 import project.irfananda.navdraw_w_slidetab.R;
 import project.irfananda.navdraw_w_slidetab.adapter.CardAdapter;
+import project.irfananda.navdraw_w_slidetab.dialog.DialogBuilder;
 import project.irfananda.navdraw_w_slidetab.object.DefineListFilm;
 import project.irfananda.navdraw_w_slidetab.object.Film;
 import project.irfananda.navdraw_w_slidetab.recyclerView.RecyclerTouchListener;
@@ -59,19 +61,20 @@ public class CardFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Film film = filmList.get(position);
-                ImageView img_ordered = (ImageView) view.findViewById(R.id.img_ordered);
-                if (film.isOrdered()) {
-                    img_ordered.setImageResource(R.drawable.ic_check_circle_grey_500_24dp);
-                    film.setOrdered(false);
-                } else {
-                    img_ordered.setImageResource(R.drawable.ic_check_circle_amber_500_24dp);
-                    film.setOrdered(true);
-                }
+                Snackbar.make(view, film.getTitle(), Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
 
             @Override
             public void onLongClick(View view, int position) {
                 Film film = filmList.get(position);
+                DialogBuilder dialogBuilder = new DialogBuilder(getActivity(),film);
+                dialogBuilder.showListDialog();
             }
         }));
 

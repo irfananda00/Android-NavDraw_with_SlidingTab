@@ -38,13 +38,13 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
         Film film = filmList.get(position);
         holder.txt_price.setText("$ "+film.getPrice());
         holder.img_poster.setImageResource(film.getImg());
-        if (film.isOrdered()) {
-            holder.rl_card.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
-            holder.txt_price.setTextColor(context.getResources().getColor(R.color.colorText));
-        } else {
-            holder.rl_card.setBackgroundColor(context.getResources().getColor(R.color.cardview_light_background));
-            holder.txt_price.setTextColor(context.getResources().getColor(R.color.colorSecondaryText));
-        }
+//        if (film.isOrdered()) {
+//            holder.rl_card.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+//            holder.txt_price.setTextColor(context.getResources().getColor(R.color.colorText));
+//        } else {
+//            holder.rl_card.setBackgroundColor(context.getResources().getColor(R.color.cardview_light_background));
+//            holder.txt_price.setTextColor(context.getResources().getColor(R.color.colorSecondaryText));
+//        }
     }
 
     @Override

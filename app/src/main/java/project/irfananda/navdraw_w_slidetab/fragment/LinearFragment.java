@@ -16,6 +16,7 @@ import java.util.List;
 
 import project.irfananda.navdraw_w_slidetab.ClickListener;
 import project.irfananda.navdraw_w_slidetab.R;
+import project.irfananda.navdraw_w_slidetab.dialog.DialogBuilder;
 import project.irfananda.navdraw_w_slidetab.object.DefineListFilm;
 import project.irfananda.navdraw_w_slidetab.object.Film;
 import project.irfananda.navdraw_w_slidetab.recyclerView.DividerItemDecoration;
@@ -75,6 +76,8 @@ public class LinearFragment extends Fragment {
             @Override
             public void onLongClick(View view, int position) {
                 Film film = filmList.get(position);
+                DialogBuilder dialogBuilder = new DialogBuilder(getActivity(),film);
+                dialogBuilder.showListDialog();
             }
         }));
 

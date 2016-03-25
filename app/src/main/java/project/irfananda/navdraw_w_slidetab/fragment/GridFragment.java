@@ -20,6 +20,7 @@ import project.irfananda.navdraw_w_slidetab.ClickListener;
 import project.irfananda.navdraw_w_slidetab.R;
 import project.irfananda.navdraw_w_slidetab.adapter.GridAdapter;
 import project.irfananda.navdraw_w_slidetab.adapter.LinearAdapter;
+import project.irfananda.navdraw_w_slidetab.dialog.DialogBuilder;
 import project.irfananda.navdraw_w_slidetab.object.DefineListFilm;
 import project.irfananda.navdraw_w_slidetab.object.Film;
 import project.irfananda.navdraw_w_slidetab.recyclerView.DividerItemDecoration;
@@ -66,23 +67,20 @@ public class GridFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Film film = filmList.get(position);
-                RelativeLayout rl_card = (RelativeLayout) view.findViewById(R.id.rl_title);
-                TextView txt_price = (TextView) view.findViewById(R.id.txt_price);
-                if (film.isOrdered()) {
-                    rl_card.setBackgroundColor(getResources().getColor(R.color.cardview_light_background));
-                    txt_price.setTextColor(getResources().getColor(R.color.colorSecondaryText));
-                    film.setOrdered(false);
-                } else {
-                    rl_card.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    txt_price.setTextColor(getResources().getColor(R.color.colorText));
-                    film.setOrdered(true);
-                }
+                Snackbar.make(view, film.getTitle(), Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
 
             @Override
             public void onLongClick(View view, int position) {
                 Film film = filmList.get(position);
-
+                DialogBuilder dialogBuilder = new DialogBuilder(getActivity(),film);
+                dialogBuilder.showListDialog();
             }
         }));
 

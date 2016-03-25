@@ -1,22 +1,20 @@
 package project.irfananda.navdraw_w_slidetab.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.List;
 
 import project.irfananda.navdraw_w_slidetab.ClickListener;
 import project.irfananda.navdraw_w_slidetab.R;
-import project.irfananda.navdraw_w_slidetab.adapter.GridAdapter;
 import project.irfananda.navdraw_w_slidetab.adapter.StagAdapter;
+import project.irfananda.navdraw_w_slidetab.dialog.DialogBuilder;
 import project.irfananda.navdraw_w_slidetab.object.DefineListFilm;
 import project.irfananda.navdraw_w_slidetab.object.Film;
 import project.irfananda.navdraw_w_slidetab.recyclerView.RecyclerTouchListener;
@@ -62,29 +60,20 @@ public class StaggeredFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Film film = filmList.get(position);
-                RelativeLayout rl_card = (RelativeLayout) view.findViewById(R.id.rl_title);
-                TextView txt_title = (TextView) view.findViewById(R.id.txt_title);
-                TextView txt_category = (TextView) view.findViewById(R.id.txt_category);
-                TextView txt_price = (TextView) view.findViewById(R.id.txt_price);
-                if (film.isOrdered()) {
-                    rl_card.setBackgroundColor(getResources().getColor(R.color.cardview_light_background));
-                    txt_title.setTextColor(getResources().getColor(R.color.colorPrimaryText));
-                    txt_category.setTextColor(getResources().getColor(R.color.colorSecondaryText));
-                    txt_price.setTextColor(getResources().getColor(R.color.colorSecondaryText));
-                    film.setOrdered(false);
-                } else {
-                    rl_card.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    txt_title.setTextColor(getResources().getColor(R.color.colorText));
-                    txt_category.setTextColor(getResources().getColor(R.color.colorText));
-                    txt_price.setTextColor(getResources().getColor(R.color.colorText));
-                    film.setOrdered(true);
-                }
+                Snackbar.make(view, film.getTitle(), Snackbar.LENGTH_LONG)
+                        .setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
 
             @Override
             public void onLongClick(View view, int position) {
                 Film film = filmList.get(position);
-
+                DialogBuilder dialogBuilder = new DialogBuilder(getActivity(),film);
+                dialogBuilder.showListDialog();
             }
         }));
 

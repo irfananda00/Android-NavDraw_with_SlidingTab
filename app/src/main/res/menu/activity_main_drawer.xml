@@ -7,18 +7,9 @@
         <item android:id="@+id/nav_list"
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="List" />
-        <item android:id="@+id/nav_draft"
-            android:icon="@drawable/ic_drafts_green_24dp"
-            android:title="Drafts" />
-        <item android:id="@+id/nav_sent"
-            android:icon="@drawable/ic_send_green_24dp"
-            android:title="Sent" />
-        <item android:id="@+id/nav_star"
-            android:icon="@drawable/ic_star_green_24dp"
-            android:title="Starred" />
-        <item android:id="@+id/nav_trash"
-            android:icon="@drawable/ic_delete_green_24dp"
-            android:title="Trash" />
+        <item android:id="@+id/nav_login"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Login" />
     </group>
 
     <group

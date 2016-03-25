@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/img_ordered"
         android:src="@drawable/ic_check_circle_grey_500_24dp"
-        android:paddingTop="8dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>
