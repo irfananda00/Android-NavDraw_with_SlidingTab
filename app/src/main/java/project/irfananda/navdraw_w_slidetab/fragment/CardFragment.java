@@ -3,8 +3,10 @@ package project.irfananda.navdraw_w_slidetab.fragment;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +25,12 @@ import project.irfananda.navdraw_w_slidetab.recyclerView.RecyclerTouchListener;
 
 public class CardFragment extends Fragment {
 
-    private List<Film> filmList;
     private RecyclerView rv;
     private CardAdapter cardAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public CardFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        DefineListFilm defineListFilm = new DefineListFilm();
-        filmList = defineListFilm.getFilmListMedium();
-        cardAdapter= new CardAdapter(filmList,getActivity());
     }
 
     @Override
@@ -45,6 +39,9 @@ public class CardFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_list, container, false);
 
+        cardAdapter = new CardAdapter(DefineListFilm.filmListMedium, getActivity());
+
+        swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
         rv = (RecyclerView) v.findViewById(R.id.rv);
 
         rv.setHasFixedSize(true);
@@ -52,15 +49,21 @@ public class CardFragment extends Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(mLayoutManager);
 
-//        rv.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-//        rv.setItemAnimator(new DefaultItemAnimator());
-
         rv.setAdapter(cardAdapter);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //load new data here
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         rv.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Film film = filmList.get(position);
+                Film film = DefineListFilm.filmListMedium.get(position);
                 Snackbar.make(view, film.getTitle(), Snackbar.LENGTH_LONG)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
@@ -72,7 +75,7 @@ public class CardFragment extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                Film film = filmList.get(position);
+                Film film = DefineListFilm.filmListMedium.get(position);
                 DialogBuilder dialogBuilder = new DialogBuilder(getActivity(),film);
                 dialogBuilder.showListDialog();
             }

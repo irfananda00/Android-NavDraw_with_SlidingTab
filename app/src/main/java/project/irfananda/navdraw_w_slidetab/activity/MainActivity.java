@@ -12,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import project.irfananda.navdraw_w_slidetab.R;
-import project.irfananda.navdraw_w_slidetab.fragment.LoginFragment;
+import project.irfananda.navdraw_w_slidetab.fragment.DialogFragment;
 import project.irfananda.navdraw_w_slidetab.fragment.TabFragment;
+import project.irfananda.navdraw_w_slidetab.object.DefineListFilm;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +43,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        DefineListFilm.setFilmListMedium();
+        DefineListFilm.setFilmListSmall();
+        DefineListFilm.setFilmListRandom();
 
         fragment = new TabFragment(tabLayout);
 
@@ -86,11 +92,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_list) {
+            tabLayout.removeAllTabs();
+            tabLayout.setVisibility(View.VISIBLE);
             fragment = new TabFragment(tabLayout);
-        } else if (id == R.id.nav_login) {
-            fragment = new LoginFragment();
+        } else if (id == R.id.nav_dialog) {
+            tabLayout.setVisibility(View.INVISIBLE);
+            fragment = new DialogFragment();
         }
 
+        changeFragment(fragment);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

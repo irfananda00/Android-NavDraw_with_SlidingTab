@@ -7,9 +7,9 @@
         <item android:id="@+id/nav_list"
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="List" />
-        <item android:id="@+id/nav_login"
-            android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="Login" />
+        <item android:id="@+id/nav_dialog"
+            android:icon="@drawable/ic_crop_square_black_24dp"
+            android:title="Dialog" />
     </group>
 
     <group
