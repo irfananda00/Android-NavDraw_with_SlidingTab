@@ -50,8 +50,8 @@ public class TabFragment extends Fragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.addFragment(new LinearFragment(), "Linear");
         adapter.addFragment(new CardFragment(), "Card");
-        adapter.addFragment(new GridFragment(), "Grid");
-        adapter.addFragment(new StaggeredFragment(), "Stag");
+//        adapter.addFragment(new GridFragment(), "Grid");
+//        adapter.addFragment(new StaggeredFragment(), "Stag");
         viewPager.setAdapter(adapter);
     }
 
